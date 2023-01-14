@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +13,9 @@ use App\Http\Controllers\UserController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('register', 'UserController@register');
-Route::post('login', 'UserController@authenticate');
+Route::post('register', 'App\Http\Controllers\UserController@register');
+Route::post('login', 'App\Http\Controllers\UserController@authenticate');
 //routas mediante jwt
 Route::group(['middleware' => ['jwt.verify']], function () {
-    Route::get('user', 'UserController@getAuthenticatedUser');
+    Route::get('user', 'App\Http\Controllers\UserController@getAuthenticatedUser');
 });
