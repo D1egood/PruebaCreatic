@@ -18,6 +18,7 @@ Route::post('login', 'App\Http\Controllers\UserController@authenticate');
 //routas mediante jwt
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'App\Http\Controllers\UserController@getAuthenticatedUser');
+    Route::delete('user/{id}', 'App\Http\Controllers\UserController@deleteUser');
     Route::get('products', 'App\Http\Controllers\ProductController@getProducts');
     Route::post('products', 'App\Http\Controllers\ProductController@newProducts');
     Route::put('product/{id}', 'App\Http\Controllers\ProductController@editProduct');
